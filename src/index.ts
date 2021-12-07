@@ -1,7 +1,14 @@
-import { Client, Intents } from "discord.js"
+import { Client, Intents, WebhookClient, TextChannel, Message } from "discord.js"
 import dotenv from "dotenv"
 
+
+import config from "./config.json"
+import dadJokes from "./assets/dad-jokes.json"
+import msgReplies from "./assets/reply-messages.json"
+
+
 dotenv.config()
+
 
 const client = new Client({
     intents: [
@@ -11,13 +18,42 @@ const client = new Client({
     ]
 })
 
+
+const dadJokesWebhook = new WebhookClient({ url: config.server.hangout.hangout.webhook })
+
+
 client.on("messageCreate", (msg) => {
-    msg.reply("Hi!")
+    if (msg.content.startsWith("..say")) {
+        let msgSay = msg.content.slice(5);
+
+        (client.channels.cache.get(msg.channelId) as TextChannel).send(msgSay)
+    } else {
+        msg.reply("Hi")
+    }
+
+    const randomMsg = msgReplies[Math.floor(Math.random() * msgReplies.length)]
+
+    msg.reply(randomMsg)
 })
 
-setInterval(function(){ 
-    console.log("Hi")
-}, 1000);
+
+// Dad Joke Sender
+setInterval(function(){
+
+    const randomDadJoke = dadJokes[Math.floor(Math.random() * dadJokes.length)]
+
+    dadJokesWebhook.send({
+        content: randomDadJoke,
+        username: "Very Funny Dad",
+        avatarURL: "https://static.wikia.nocookie.net/youtube/images/c/ca/Dad.jpg/revision/latest?cb=20201026072758"
+    })
+
+}, 5000);
+
+
+// Login to the bot
 
 client.login(process.env.TOKEN)
     .then(() => console.log("Successfully logged into the bot"))
+
+    let a = ""

@@ -1,15 +1,12 @@
 {
     "ATTENTION": "WEBHOOKS WILL BE DELETED AFTER THIS BOT HAS SPREAD IT'S WRATH!!!",
-
     "name": "Mr. Funny Man",
-
     "server": {
         "hangout": {
             "hangout": {
                 "id": "881292716380659792",
-                "webhook": "https://discord.com/api/webhooks/917615897319964713/7aRBBxELJntjyDXZjLgrPubEdQJp1EeRb7eF7EUu8leI08kPVPf8WlEmZ5HGNRcJapCg" 
+                "webhook": "https://discord.com/api/webhooks/917615897319964713/7aRBBxELJntjyDXZjLgrPubEdQJp1EeRb7eF7EUu8leI08kPVPf8WlEmZ5HGNRcJapCg"
             },
-
             "memes": {
                 "webhook": "https://discord.com/api/webhooks/917616826731626516/0btiVYNe9NYrEp7s3rqh2nn0VqWeI00mylwTZ958-3ZJr2jlFvMveKBoaJwNXcySqAGr"
             }
