@@ -29,6 +29,9 @@ client.on("messageCreate", (msg) => {
         (client.channels.cache.get(msg.channelId) as TextChannel).send(msgSay)
     } else {
         msg.reply("Hi")
+        msg.react("🔥")
+        msg.react("💯")
+        msg.react("😎")
     }
 
     const randomMsg = msgReplies[Math.floor(Math.random() * msgReplies.length)]
